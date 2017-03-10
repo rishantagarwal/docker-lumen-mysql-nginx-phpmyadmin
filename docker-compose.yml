@@ -1,14 +1,16 @@
 nginx:
-  build: images/nginx
+  build: .
+  dockerfile: nginx.docker
   command: nginx -g "daemon off;"
   links:
     - php
   ports:
     - "80:80"
 php:
-  build: images/php
+  build: .
+  dockerfile: php.docker
   volumes:
-    - ./images/php/recipo_api:/app
+    - ./:/app
   working_dir: /app/public
   command: php-fpm
   links:

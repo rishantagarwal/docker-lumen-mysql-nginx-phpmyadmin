@@ -13,5 +13,6 @@ RUN curl -s http://getcomposer.org/installer | php && \
 RUN . ~/.bashrc
 
 #Install Dependencies
-ONBUILD WORKDIR /app
-ONBUILD composer update
+
+#ADD ./composer.json ./
+#ADD ./composer.lock ./

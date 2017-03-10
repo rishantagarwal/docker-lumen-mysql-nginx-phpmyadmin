@@ -1,2 +1,5 @@
-.idea
-images/php/app
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
