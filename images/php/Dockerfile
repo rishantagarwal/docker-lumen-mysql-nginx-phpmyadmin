@@ -11,3 +11,7 @@ RUN curl -s http://getcomposer.org/installer | php && \
 
 # Source the bash
 RUN . ~/.bashrc
+
+#Install Dependencies
+ONBUILD WORKDIR /app
+ONBUILD composer update
