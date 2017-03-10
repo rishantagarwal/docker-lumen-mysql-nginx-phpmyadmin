@@ -2,5 +2,12 @@ FROM php:fpm
 RUN apt-get update && apt-get install -y libmcrypt-dev
 
 # lumen packages
-RUN apt-get install -y php5-memcached
+RUN apt-get install -y php5-memcached git vim zip
 RUN docker-php-ext-install mcrypt mbstring tokenizer mysqli pdo_mysql
+# Install composer and add its bin to the PATH.
+RUN curl -s http://getcomposer.org/installer | php && \
+    echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
+    mv composer.phar /usr/local/bin/composer
+
+# Source the bash
+RUN . ~/.bashrc

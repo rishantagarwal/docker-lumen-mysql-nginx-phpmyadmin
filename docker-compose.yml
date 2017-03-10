@@ -8,7 +8,7 @@ nginx:
 php:
   build: images/php
   volumes:
-    - ./images/php/app:/app
+    - ./images/php/recipo_api:/app
   working_dir: /app/public
   command: php-fpm
   links:
@@ -24,8 +24,8 @@ php:
     APP_FALLBACK_LOCALE: en
     DB_CONNECTION: mysql
     DB_HOST: db
-    DB_DATABASE: lumen
-    DB_USERNAME: lumen
+    DB_DATABASE: recipo
+    DB_USERNAME: root
     DB_PASSWORD: secret
     MEMCACHED_HOST: cache
     CACHE_DRIVER: memcached
@@ -35,7 +35,7 @@ db:
     - "3306:3306"
   environment:
     MYSQL_ROOT_PASSWORD: secret
-    MYSQL_DATABASE: lumen
+    MYSQL_DATABASE: recipo
     MYSQL_USER: lumen
     MYSQL_PASSWORD: secret
 cache:
@@ -49,7 +49,7 @@ phpmyadmin:
      - PMA_ARBITRARY=1
      - PMA_HOST=db
      - PMA_PORT=3306
-     - PMA_USER=lumen
+     - PMA_USER=root
      - PMA_PASSWORD=secret
     restart: always
     ports:
